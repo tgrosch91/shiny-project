@@ -10,14 +10,17 @@ git clone this repo into the Sites directory. The result should be Users/{userna
 Create a directory in /etc/apache2/users/{username}.conf
 Inside this directory paste in:
 
+```sh
 <Directory "/Users/{username}/Sites/">
 AllowOverride All
 Options Indexes MultiViews FollowSymLinks
 Require all granted
 </Directory>
+```
 
 Add virtual host by going into /etc/apache2/extra/httpd-vhosts.conf and adding:
 
+```sh
 <VirtualHost *:80>
     ServerName shiny.local
     DocumentRoot /Users/{username}/Sites/shiny-project/web/
@@ -28,8 +31,10 @@ Add virtual host by going into /etc/apache2/extra/httpd-vhosts.conf and adding:
             Require all granted
     </Directory>
 </VirtualHost>
+```
 
 Then go to /etc/apache2/httpd.conf and uncomment:
+
 LoadModule deflate_module libexec/apache2/mod_deflate.so
 LoadModule userdir_module libexec/apache2/mod_userdir.so
 LoadModule rewrite_module libexec/apache2/mod_rewrite.so
