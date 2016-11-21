@@ -3,6 +3,8 @@ PHP app
 
 # Get Started
 
+**Fill in {username} with your computers username!**
+
 To keep consistency with all file locations, create a directory in Users/{username}/Sites
 
 git clone this repo into the Sites directory. The result should be Users/{username}/Sites/shiny-project.
@@ -18,7 +20,7 @@ Require all granted
 </Directory>
 ```
 
-Add virtual host by going into /etc/apache2/extra/httpd-vhosts.conf and adding:
+Add virtual host by going into /etc/apache2/extra/httpd-vhosts.conf and adding (remember to change {username}:
 
 ```sh
 <VirtualHost *:80>
