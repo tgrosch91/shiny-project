@@ -35,33 +35,36 @@ Add virtual host by going into /etc/apache2/extra/httpd-vhosts.conf and adding:
 
 Then go to /etc/apache2/httpd.conf and uncomment:
 
-LoadModule deflate_module libexec/apache2/mod_deflate.so
-LoadModule userdir_module libexec/apache2/mod_userdir.so
-LoadModule rewrite_module libexec/apache2/mod_rewrite.so
-LoadModule php5_module libexec/apache2/libphp5.so
-Include /private/etc/apache2/extra/httpd-userdir.conf
-Include /private/etc/apache2/extra/httpd-vhosts.conf
+ - LoadModule deflate_module libexec/apache2/mod_deflate.so
+ - LoadModule userdir_module libexec/apache2/mod_userdir.so
+ - LoadModule rewrite_module libexec/apache2/mod_rewrite.so
+ - LoadModule php5_module libexec/apache2/libphp5.so
+ - Include /private/etc/apache2/extra/httpd-userdir.conf
+ - Include /private/etc/apache2/extra/httpd-vhosts.conf
 
 In this same file, find:
 
+```sh
 <IfModule dir_module>
     DirectoryIndex index.html
 </IfModule>
-
+```
 and add index.php like so:
 
+```sh
 <IfModule dir_module>
     DirectoryIndex index.html index.php
 </IfModule>
+```
 
 Go to /etc/apache2/extra/httpd-userdir.conf and uncomment:
-Include /private/etc/apache2/users/*.conf
+ - Include /private/etc/apache2/users/*.conf
 
 Then go to /etc/hosts and add in:
 
-127.0.0.1	shiny.local
+ - 127.0.0.1	shiny.local
 
 LASTLY perform this command:
 sudo apachectl restart
 
-Then go to shiny.local/ 
+Then in browser go to shiny.local/ 
