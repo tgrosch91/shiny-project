@@ -2,5 +2,5 @@
     // configuration
     require("../includes/config.php");
 
-    // render intro page
-    render("welcome_page.php");
+    // render scrabble page
+    render("scrabble_page.php");
