@@ -31,6 +31,7 @@
           <ul class="nav nav-pills">
               <li><a href="index.php" >Home</a></li>
               <li><a href="scrabble.php">Scrabble&trade;</a></li>
+              <li><a href="sports.php">Sports Stats</a></li>
           </ul>
         </div>
 
