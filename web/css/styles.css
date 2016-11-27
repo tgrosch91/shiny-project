@@ -128,3 +128,10 @@ body
   margin-top: 150px;
   padding: 0px 10px;
 }
+
+#dictionary-choices
+{
+  width: 180px;
+  height: 180px;
+  margin:auto;
+}
