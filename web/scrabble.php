@@ -10,14 +10,33 @@
       $selectedDic = "";
       $selectedDic = $_POST["dictionaries"];
 
-      $csv = file($selectedDic);
+      $csvDic = file($selectedDic);
       $selectedLetters = [];
       $selectedLetters = $_POST["alphabet_letters"];
       $letterCount = count($selectedLetters);
 
-      var_dump($letterCount); die;
 
-    //  var_dump($csv[17]); die;
+      foreach ($csvDic as &$value){
+        $value = trim($value);
+      }
+
+      $csvDic = array_flip($csvDic);
+
+      function alphabetize($key, $value)
+      {
+        $keyParts = str_split($key);
+        sort($keyParts);
+        $value = implode('', $keyParts);
+      }
+
+      
+
+      $csvDicSorted = array_map("alphabetize", array_keys($csvDic), $csvDic);
+
+
+      var_dump($csvDicSorted); die;
+
+
 
     }
 ?>
