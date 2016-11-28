@@ -13,8 +13,9 @@
 
       $csv = file($selectedDic);
 
-      $csvarray = array(fgetcsv(resource $csv));
+      $csvarray = fgetcsv($csv, "/n");
       //Here I'm trying to turn the csv file into an array. Not sure if I've done this correctly.
+      //It's saying in the error message that $csv at this point is an array?
 
       $csvarray = array('strtolower', $csvarray);
       //Change all strings in the array to lower case?

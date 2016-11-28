@@ -7,10 +7,11 @@
 <form action="scrabble.php" method="post">
     <div class="form-group">
         <select id="dictionary-choices" name="dictionaries" class="form-control" multiple>
-          <option value = "1">Official Scrabble Player's Dictionary</option>
-          <option value = "2">Enable</option>
-          <option value = "../includes/web2dictionary.csv">Webster's New Interntional</option>
-          <option value = "3">Moby Words</option>
+          <option value = "../includes/ospd.csv">Official Scrabble Player's Dictionary</option>
+          <option value = "../includes/enable1dictionary.csv">Enable</option>
+          <option value = "../includes/web2dictionary.csv">Webster's New International</option>
+          <option value = "../includes/mbsingledictionary.csv">Moby Words</option>
+          <option value = "../includes/unixdict.csv">UNIX</option>
         </select>
     </div>
     <div class="form-group">
