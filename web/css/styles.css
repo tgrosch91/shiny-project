@@ -131,7 +131,14 @@ body
 
 #dictionary-choices
 {
-  width: 300px;
-  height: 180px;
+  width: 200px;
+  height: 100px;
+  margin:auto;
+}
+
+#letter-choices
+{
+  width: 100px;
+  height: 200px;
   margin:auto;
 }

@@ -6,7 +6,7 @@
 
 <form action="scrabble.php" method="post">
     <div class="form-group">
-        <select id="dictionary-choices" name="dictionaries" class="form-control" multiple>
+        <select id="dictionary-choices" name="dictionaries" class="form-control">
           <option value = "../includes/ospd.csv">Official Scrabble Player's Dictionary</option>
           <option value = "../includes/enable1dictionary.csv">Enable</option>
           <option value = "../includes/web2dictionary.csv">Webster's New International</option>
@@ -15,7 +15,37 @@
         </select>
     </div>
     <div class="form-group">
-        <button class="btn btn-default" type="submit">Choose Dictionary</button>
+        <select id="letter-choices" name="alphabet_letters[]" class="form-control" multiple>
+          <option value = "a">A</option>
+          <option value = "b">B</option>
+          <option value = "c">C</option>
+          <option value = "d">D</option>
+          <option value = "e">E</option>
+          <option value = "f">F</option>
+          <option value = "g">G</option>
+          <option value = "h">H</option>
+          <option value = "i">I</option>
+          <option value = "j">J</option>
+          <option value = "k">K</option>
+          <option value = "l">L</option>
+          <option value = "m">M</option>
+          <option value = "n">N</option>
+          <option value = "o">O</option>
+          <option value = "p">P</option>
+          <option value = "q">Q</option>
+          <option value = "r">R</option>
+          <option value = "s">S</option>
+          <option value = "t">T</option>
+          <option value = "u">U</option>
+          <option value = "v">V</option>
+          <option value = "w">W</option>
+          <option value = "x">X</option>
+          <option value = "y">Y</option>
+          <option value = "z">Z</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-default" type="submit">View Options</button>
     </div>
 </form>
 
