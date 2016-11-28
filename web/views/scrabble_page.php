@@ -6,11 +6,11 @@
 
 <form action="scrabble.php" method="post">
     <div class="form-group">
-        <select id="dictionary-choices" name="stats[]" class="form-control" multiple>
-          <option>Official Scrabble Player's Dictionary</option>
-          <option>Enable</option>
-          <option>Webster's New Interntional</option>
-          <option>Moby Words</option>
+        <select id="dictionary-choices" name="dictionaries" class="form-control" multiple>
+          <option value = "1">Official Scrabble Player's Dictionary</option>
+          <option value = "2">Enable</option>
+          <option value = "../includes/web2dictionary.csv">Webster's New Interntional</option>
+          <option value = "3">Moby Words</option>
         </select>
     </div>
     <div class="form-group">
