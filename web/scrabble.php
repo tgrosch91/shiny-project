@@ -24,17 +24,23 @@
 
       function alphabetize($key, $value)
       {
+        $tempArray = [];
         $keyParts = str_split($key);
         sort($keyParts);
-        $value = implode('', $keyParts);
+        $value = implode($keyParts);
+        $tempArray[$key] = $value;
+        return $tempArray;
       }
 
-      
-
-      $csvDicSorted = array_map("alphabetize", array_keys($csvDic), $csvDic);
+      $arraytest = ["hti" => 5, "sfkj" => 7];
 
 
-      var_dump($csvDicSorted); die;
+
+
+      $arraytestsorted = array_map("alphabetize", array_keys($csvDic), $csvDic);
+
+
+      var_dump($arraytestsorted); die;
 
 
 
