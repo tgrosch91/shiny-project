@@ -1,4 +1,6 @@
 <?php
+    ini_set('max_execution_time', 300);
+
     require("../includes/config.php");
     if ($_SERVER["REQUEST_METHOD"] == "GET")
     {
@@ -13,8 +15,8 @@
       $csvDic = file($selectedDic);
 
       $letterValueArray = ['a'=>1,'e'=>1,'i'=>1,'l'=>1,'n'=>1,'o'=>1,'r'=>1,'s'=>1,'t'=>1,'u'=>1,'d'=>2,'g'=>2,'b'=>3,'c'=>3,'m'=>3,'p'=>3,'f'=>4,'h'=>4,'v'=>4,'w'=>4,'y'=>4,'k'=>5,'j'=>8,'x'=>8,'q'=>10,'z'=>10];
-
-      function sort_by_tile_value($letterValues, $letterArray){
+      // may not end up using the following function. not sure how much time it would save and its a pain going back and forth from sorted alphabetically to sorted by value and i think i miss string values if i don't switch back and forth
+    /*  function sort_by_tile_value($letterValues, $letterArray){
         $size = count($letterArray);
         for ($i=0; $i<$size; $i++) {
           for ($j=0; $j<$size-1-$i; $j++){
@@ -31,7 +33,7 @@
             }
           }
         return $letterArray;
-      }
+      } */
 
       $selectedLetters = $_POST["alphabet_letters"];
       preg_match_all("/[a-z]/i", $selectedLetters, $selectedLettersArrayLong);
@@ -64,24 +66,33 @@
       }
 
 
+      function checking_for_match($dictionary, $allLetters, $matchArrayKeys){
+        $potentialMatch = array_keys($dictionary, $allLetters);
+        if($potentialMatch != []){
+          array_push($matchArrayKeys,$potentialMatch);
+        }
+        return $matchArrayKeys;
+      }
+
+
       function add_to_possibilities($dictionary, $allLetters){
         $matchArrayKeys = [];
-        while(count($matchArrayKeys) < 15){
-          $potentialMatch = array_keys($dictionary, $allLetters);
-          if($potentialMatch != []){
-            array_push($matchArrayKeys,$potentialMatch);
+        while(count($matchArrayKeys) < count($allLetters)){
+          $matchArrayKeys = checking_for_match($dictionary, $allLetters, $matchArrayKeys);
+          for ($i = 0, $size = count($allLetters); $i <$size; ++$i){
+            $allLetters = substr_replace($allLetters, '', $i, 1);
+            $matchArrayKeys = checking_for_match($dictionary, $allLetters, $matchArrayKeys);
           }
-
         }
         return $matchArrayKeys;
       }
 
       $matchArrayKeys = add_to_possibilities($csvDicSorted,$selectedLettersString);
 
-      var_dump($matchArrayKeys);die;
 
 
-      //var_dump($letterValues); die;
+
+      var_dump($matchArrayKeys); die;
 
 
 
