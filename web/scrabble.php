@@ -12,14 +12,33 @@
 
       $csvDic = file($selectedDic);
 
+      $letterValueArray = ['a'=>1,'e'=>1,'i'=>1,'l'=>1,'n'=>1,'o'=>1,'r'=>1,'s'=>1,'t'=>1,'u'=>1,'d'=>2,'g'=>2,'b'=>3,'c'=>3,'m'=>3,'p'=>3,'f'=>4,'h'=>4,'v'=>4,'w'=>4,'y'=>4,'k'=>5,'j'=>8,'x'=>8,'q'=>10,'z'=>10];
+
+      function sort_by_tile_value($letterValues, $letterArray){
+        $size = count($letterArray);
+        for ($i=0; $i<$size; $i++) {
+          for ($j=0; $j<$size-1-$i; $j++){
+            $first = $letterArray[$j];
+            $second = $letterArray[$j+1];
+            $first_value = $letterValues[$first];
+            $second_value = $letterValues[$second];
+            if ($second_value < $first_value) {
+                $a = $letterArray[$j];
+                $b = $letterArray[$j+1];
+                $letterArray[$j] = $b;
+                $letterArray[$j+1] = $a;
+                }
+            }
+          }
+        return $letterArray;
+      }
+
       $selectedLetters = $_POST["alphabet_letters"];
       preg_match_all("/[a-z]/i", $selectedLetters, $selectedLettersArrayLong);
       $selectedLettersArray = $selectedLettersArrayLong[0];
       $letterCount = count($selectedLettersArray);
       sort($selectedLettersArray);
       $selectedLettersString = implode($selectedLettersArray);
-
-      $letterValues = [1 => ["a","e","i","l","n","o","r","s","t","u"], 2 => ["d","g"], 3 => ["b","c","m","p"], 4 => ["f","h","v","w","y"], 5 => ["k"], 8 => ["j","x"], 10 => ["q","z"]];
 
 
       foreach ($csvDic as &$value){
@@ -37,36 +56,6 @@
         return $value;
       }
 
-      function sort_by_tile_value($letterValues, $letterArray){
-        $size = count($letterArray);
-        for ($i=0; $i<$size; $i++) {
-          for ($j=0; $j<$size-1-$i; $j++) {
-            $first=$letterArray[$j];
-            //right now this isn't working because array_keys is just searching for first, not the value that contains first
-            //may need to switch up how i'v organized letter_values
-            $first_value = array_keys($letterValues, $first);
-            $second_value = array_values(array_keys($letterValues, $letterArray[$j+1]));
-            var_dump($first); die;
-            if ($second_value < $first_value) {
-              swap($letterArray, $first_value, $second_value);
-            }
-          }
-        }
-        return $letterArray;
-      }
-
-      function swap(&$arr, $a, $b) {
-        $tmp = $arr[$a];
-        $arr[$a] = $arr[$b];
-        $arr[$b] = $tmp;
-        }
-
-      $test_array = ["a","z","d"];
-
-      $testResult = sort_by_tile_value($letterValues, $test_array);
-      var_dump($testResult); die;
-
-
       $csvDicSorted = [];
 
       foreach($csvDic as $key => $value){
@@ -74,12 +63,22 @@
         $csvDicSorted[$key] = $newValue;
       }
 
+
       function add_to_possibilities($dictionary, $allLetters){
         $matchArrayKeys = [];
+        while(count($matchArrayKeys) < 15){
+          $potentialMatch = array_keys($dictionary, $allLetters);
+          if($potentialMatch != []){
+            array_push($matchArrayKeys,$potentialMatch);
+          }
 
+        }
+        return $matchArrayKeys;
       }
 
-      $matchArrayKeys = array_keys($csvDicSorted, $selectedLettersString);
+      $matchArrayKeys = add_to_possibilities($csvDicSorted,$selectedLettersString);
+
+      var_dump($matchArrayKeys);die;
 
 
       //var_dump($letterValues); die;
