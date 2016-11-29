@@ -11,13 +11,17 @@
       $selectedDic = $_POST["dictionaries"];
 
       $csvDic = file($selectedDic);
-      $selectedLetters = [];
+
       $selectedLetters = $_POST["alphabet_letters"];
-      $letterCount = count($selectedLetters);
-      //here we can't use this because you need to be able to enter multiples, dumbass
+      preg_match_all("/[a-z]/i", $selectedLetters, $selectedLettersArrayLong);
+      $selectedLettersArray = $selectedLettersArrayLong[0];
+      $letterCount = count($selectedLettersArray);
+      sort($selectedLettersArray);
+      $selectedLettersString = implode($selectedLettersArray);
 
 
       foreach ($csvDic as &$value){
+
         $value = trim($value);
       }
 
@@ -25,23 +29,30 @@
 
       function alphabetize($key, $value)
       {
-        $tempArray = [];
         $keyParts = str_split($key);
         sort($keyParts);
         $value = implode($keyParts);
-        $tempArray[$key] = $value;
-        return $tempArray;
+        return $value;
       }
 
-      //loop through the array and then create a new array to push those key value pairs onto it
 
+      $csvDicSorted = [];
 
+      foreach($csvDic as $key => $value){
+        $newValue = alphabetize($key, $value);
+        $csvDicSorted[$key] = $newValue;
+      }
 
+      function add_to_possibilities($dictionary, $allLetters){
+        $matchArrayKeys = []
 
-      $arraytestsorted = array_map("alphabetize", array_keys($csvDic), $csvDic);
+      }
 
+      $matchArrayKeys = array_keys($csvDicSorted, $selectedLettersString);
 
-      var_dump($arraytestsorted); die;
+      $letterValues = [1 => ["a","e","i","l","n","o","r","s","t","u"], 2 => ["d","g"], 3 => ["b","c","m","p"], 4 => ["f","h","v","w","y"], 5 => ["k"], 8 => ["j","x"], 10 => ["q","z"]];
+
+      var_dump($letterValues); die;
 
 
 
