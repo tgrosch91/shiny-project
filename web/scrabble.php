@@ -14,6 +14,7 @@
       $selectedLetters = [];
       $selectedLetters = $_POST["alphabet_letters"];
       $letterCount = count($selectedLetters);
+      //here we can't use this because you need to be able to enter multiples, dumbass
 
 
       foreach ($csvDic as &$value){
@@ -32,7 +33,7 @@
         return $tempArray;
       }
 
-      $arraytest = ["hti" => 5, "sfkj" => 7];
+      //loop through the array and then create a new array to push those key value pairs onto it
 
 
 
