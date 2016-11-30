@@ -77,13 +77,13 @@
 
       function add_to_possibilities($dictionary, $allLetters){
         $matchArrayKeys = [];
-        while(count($matchArrayKeys) < count($allLetters)){
-          $matchArrayKeys = checking_for_match($dictionary, $allLetters, $matchArrayKeys);
-          for ($i = 0, $size = count($allLetters); $i <$size; ++$i){
-            $allLetters = substr_replace($allLetters, '', $i, 1);
-            $matchArrayKeys = checking_for_match($dictionary, $allLetters, $matchArrayKeys);
+        $matchArrayKeys = checking_for_match($dictionary, $allLetters, $matchArrayKeys);
+        for ($i = 0; $i < strlen($allLetters); $i++){
+          $allLettersArray = str_split($allLetters);
+          unset($allLettersArray[$i]);
+          $allLettersShort = implode($allLettersArray);
+          $matchArrayKeys = checking_for_match($dictionary, $allLettersShort, $matchArrayKeys);
           }
-        }
         return $matchArrayKeys;
       }
 
@@ -92,7 +92,7 @@
 
 
 
-      var_dump($matchArrayKeys); die;
+    var_dump($matchArrayKeys); die;
 
 
 
