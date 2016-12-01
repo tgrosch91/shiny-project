@@ -17,12 +17,12 @@
         <?php endif ?>
 
         <!-- https://jquery.com/ -->
-        <!-- <script src="js/jquery-1.11.3.min.js"></script> -->
+        <script src="js/jquery-1.11.3.min.js"></script>
 
         <!-- http://getbootstrap.com/ -->
-        <!-- <script src="js/bootstrap.min.js"></script> -->
+        <script src="js/bootstrap.min.js"></script>
 
-        <!-- <script src="js/scripts.js"></script> -->
+        <script src="js/youtube-scripts.js"></script>
 
     </head>
 
@@ -32,6 +32,7 @@
               <li><a href="index.php" >Home</a></li>
               <li><a href="scrabble.php">Scrabble&trade;</a></li>
               <li><a href="sports.php">Sports Stats</a></li>
+              <li><a href="youtube.php">Youtube</a></li>
           </ul>
         </div>
 
