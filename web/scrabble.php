@@ -64,7 +64,8 @@
           //var_dump($letter);die;
           if(in_array($letter,$letterInput)){
             $first_position = array_search($letter, $letterInput);
-            array_slice($letterInput, $first_position, 1);
+            unset($letterInput[$first_position]);
+            //var_dump($letterInput);die;
             array_push($existsList, "True");
             //var_dump($existsList);die;
           }
@@ -102,9 +103,9 @@
 $testdic = ["blue", "but", "blt", "iii"];
 $testinput = ["b", "l", "u", "t"];
 
-$test = test_and_add($csvDicTrim, $selectedLettersArray);
+$matchValues = test_and_add($csvDicTrim, $selectedLettersArray);
 //var_dump($selectedLettersArray);die;
-var_dump($test);die;
+var_dump($matchValues);die;
 
 
     //  $csvDic = array_flip($csvDic);
