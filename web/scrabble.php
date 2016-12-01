@@ -15,25 +15,15 @@
       $csvDic = file($selectedDic);
 
       $letterValueArray = ['a'=>1,'e'=>1,'i'=>1,'l'=>1,'n'=>1,'o'=>1,'r'=>1,'s'=>1,'t'=>1,'u'=>1,'d'=>2,'g'=>2,'b'=>3,'c'=>3,'m'=>3,'p'=>3,'f'=>4,'h'=>4,'v'=>4,'w'=>4,'y'=>4,'k'=>5,'j'=>8,'x'=>8,'q'=>10,'z'=>10];
-      // may not end up using the following function. not sure how much time it would save and its a pain going back and forth from sorted alphabetically to sorted by value and i think i miss string values if i don't switch back and forth
-    /*  function sort_by_tile_value($letterValues, $letterArray){
-        $size = count($letterArray);
-        for ($i=0; $i<$size; $i++) {
-          for ($j=0; $j<$size-1-$i; $j++){
-            $first = $letterArray[$j];
-            $second = $letterArray[$j+1];
-            $first_value = $letterValues[$first];
-            $second_value = $letterValues[$second];
-            if ($second_value < $first_value) {
-                $a = $letterArray[$j];
-                $b = $letterArray[$j+1];
-                $letterArray[$j] = $b;
-                $letterArray[$j+1] = $a;
-                }
-            }
+
+      function find_tile_value($letterValues, $letterArray){
+        $value = 0;
+        foreach ($letterArray as $letter){
+          $letterValue = $letterValues[$letter];
+          $value = $value + $letterValue;
           }
-        return $letterArray;
-      } */
+        return $value;
+      }
 
       $selectedLetters = $_POST["alphabet_letters"];
       preg_match_all("/[a-z]/i", $selectedLetters, $selectedLettersArrayLong);
@@ -42,17 +32,7 @@
       //sort($selectedLettersArray);
     //  $selectedLettersString = implode($selectedLettersArray);
 
-  /* function trim_spaces($dictionary){
-      foreach ($dictionary as $value){
-        $value = trim($value);
-        //var_dump($value);die;
-      }
-      return $dictionary;
-    }
 
-    $csvDicShort = trim_spaces($csvDic);
-    var_dump($csvDicShort);die;
-    */
 
     $csvDicTrim = array_map('trim', $csvDic);
     //var_dump($csvDicTrim);die;
@@ -105,7 +85,25 @@ $testinput = ["b", "l", "u", "t"];
 
 $matchValues = test_and_add($csvDicTrim, $selectedLettersArray);
 //var_dump($selectedLettersArray);die;
-var_dump($matchValues);die;
+//var_dump($matchValues);die;
+
+function order_by_value($matchValues, $letterValues){
+  $matchValuesFlipped = array_flip($matchValues);
+  //var_dump($matchValuesFlipped);die;
+  foreach ($matchValuesFlipped as $key => $value) {
+    $matchValueArray = str_split($key);
+    $matchValuesFlipped[$key] = $matchValueArray;
+    }
+  foreach ($matchValuesFlipped as $key => $matchValueArray){
+    $value = find_tile_value($letterValues, $matchValueArray);
+    $matchValuesFlipped[$key] = $value;
+    }
+  arsort($matchValuesFlipped);
+  return($matchValuesFlipped);
+  }
+
+$result = order_by_value($matchValues, $letterValueArray);
+var_dump($result);die;
 
 
     //  $csvDic = array_flip($csvDic);
