@@ -47,12 +47,10 @@
         $value = trim($value);
       }
 
-    function test_word($wordArray, $matches, $letterInput){
-      foreach ($dictionary as $word){
-        $wordArray = str_split($word);
+    function test_word($wordArray, $letterInput){
+      $match =[];
+      $existsList=[];
         foreach($wordArray as $letter){
-          $match = [];
-            $existsList = [];
           //var_dump($letter);die;
           if(in_array($letter,$letterInput)){
             $first_position = array_search($letter, $letterInput);
@@ -63,31 +61,35 @@
           else{
             array_push($existsList, "False");
           }
-          var_dump($existsList);die;
-        $uniqueValues = count(array_unique($existsList));
         }
-        var_dump($uniqueValues);die;
-        if ($uniqueValues == 1){
+        //var_dump($existsList);die;
+        $uniqueValues = count(array_unique($existsList));
+        //var_dump($uniqueValues);die;
+        if ($uniqueValues === 1){
         //  var_dump($uniqueValues);die;
           $word = implode($wordArray);
           array_push($match, $word);
-          var_dump($match);die;
         }
         return $match;
+        //var_dump($match);die;
       }
-    }
 
     function test_and_add($dictionary, $letterInput) {
       $matches = [];
-
+      foreach ($dictionary as $word){
+        $wordArray = str_split($word);
         //var_dump($wordArray);die;
-        $match = test_word($wordArray, $matches, $letterInput);
-        array_push($matches, $match);
+        $match = test_word($wordArray, $letterInput);
+        if ($match != []){
+        //var_dump($match);die;
+          array_push($matches, $match);
+        }
+      }
       return $matches;
       //var_dump($matches);die;
     }
 
-$testdic = ["ble", "blet", "blt"];
+$testdic = ["blue", "but", "blt"];
 $testinput = ["b", "l", "u", "t"];
 
 $test = test_and_add($testdic, $testinput);
