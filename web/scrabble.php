@@ -74,18 +74,17 @@
         return $matchArrayKeys;
       }
 
-      function layer_search($allLetters, $dictionary, $matchArrayKeys, $ix){
-          $allLettersArray = str_split($allLetters);
-          $positions_to_delete = [$ix];
-          $allLettersArray = delete_at_positions($allLettersArray, $positions_to_delete);
-          $allLettersShort = implode($allLettersArray);
-          $matchArrayKeys = checking_for_match($dictionary, $allLettersShort, $matchArrayKeys);
-          return $matchArrayKeys;
+      function layer_search($allLetters, $dictionary, $matchArrayKeys, $ix, $positions_to_delete){
+        $allLettersArray = str_split($allLetters);
+        $allLettersArray = delete_at_positions($allLettersArray, $positions_to_delete);
+        $allLettersShort = implode($allLettersArray);
+        $matchArrayKeys = checking_for_match($dictionary, $allLettersShort, $matchArrayKeys);
+        return $matchArrayKeys;
       }
 
       function delete_at_positions($array, $position_value_array){
         foreach ($position_value_array as $position){
-          array_splice($array, $position , 1);
+          unset($array[$position]);
         }
         return $array;
       }
@@ -95,7 +94,13 @@
         $matchArrayKeys = [];
         $matchArrayKeys = checking_for_match($dictionary, $allLetters, $matchArrayKeys);
         for ($ix = 0; $ix < strlen($allLetters); $ix++){
-          $matchArrayKeys = layer_search($allLetters, $dictionary, $matchArrayKeys, $ix);
+          $positions_to_delete = [$ix];
+          $matchArrayKeys = layer_search($allLetters, $dictionary, $matchArrayKeys, $ix, $positions_to_delete);
+          for ($iz = 1; $iz < (strlen($allLetters) - $iz); $iz++){
+            $position_addition = ($ix + $iz);
+            array_push($positions_to_delete, $position_addition);
+            $matchArrayKeys = layer_search($allLetters, $dictionary, $matchArrayKeys, $ix, $positions_to_delete);
+          }
         }
         return $matchArrayKeys;
       }
