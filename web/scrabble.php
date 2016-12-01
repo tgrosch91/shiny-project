@@ -40,12 +40,59 @@
       $selectedLettersArray = $selectedLettersArrayLong[0];
       //$letterCount = count($selectedLettersArray);
       //sort($selectedLettersArray);
-      $selectedLettersString = implode($selectedLettersArray);
+    //  $selectedLettersString = implode($selectedLettersArray);
 
 
-      foreach ($csvDic as &$value){
+      foreach ($csvDic as $value){
         $value = trim($value);
       }
+
+    function test_word($wordArray, $matches, $letterInput){
+      foreach ($dictionary as $word){
+        $wordArray = str_split($word);
+        foreach($wordArray as $letter){
+          $match = [];
+            $existsList = [];
+          //var_dump($letter);die;
+          if(in_array($letter,$letterInput)){
+            $first_position = array_search($letter, $letterInput);
+            array_slice($letterInput, $first_position, 1);
+            array_push($existsList, "True");
+            //var_dump($existsList);die;
+          }
+          else{
+            array_push($existsList, "False");
+          }
+          var_dump($existsList);die;
+        $uniqueValues = count(array_unique($existsList));
+        }
+        var_dump($uniqueValues);die;
+        if ($uniqueValues == 1){
+        //  var_dump($uniqueValues);die;
+          $word = implode($wordArray);
+          array_push($match, $word);
+          var_dump($match);die;
+        }
+        return $match;
+      }
+    }
+
+    function test_and_add($dictionary, $letterInput) {
+      $matches = [];
+
+        //var_dump($wordArray);die;
+        $match = test_word($wordArray, $matches, $letterInput);
+        array_push($matches, $match);
+      return $matches;
+      //var_dump($matches);die;
+    }
+
+$testdic = ["ble", "blet", "blt"];
+$testinput = ["b", "l", "u", "t"];
+
+$test = test_and_add($testdic, $testinput);
+var_dump($test);die;
+
 
     //  $csvDic = array_flip($csvDic);
 
@@ -64,15 +111,11 @@
         $csvDicSorted[$key] = $newValue;
       } */
 
-      function custom_intersect($arrayOne, $arrayTwo){
+    /*  function custom_intersect($arrayOne, $arrayTwo){
         sort($arrayOne);
         sort($arrayTwo);
         if ($arrayOne === $arrayTwo){
           return $arrayTwo;
-        }
-        else{
-          $blank = "blank";
-          return $blank;
         }
       }
 
@@ -85,7 +128,7 @@
         foreach ($dictionary as $word){
           $test_array = str_split($word);
           $return_array = custom_intersect($allLettersArray, $test_array);
-          if($return_array != "blank"){
+          if($return_array != null){
             $matchString = implode($test_array);
             array_push($matchArrayKeys,$matchString);
           }
@@ -108,11 +151,24 @@
         return $array;
       }
 
+      function layer_two_search($allLetters, $dictionary, $matchArrayKeys, $ix, $positions_to_delete){
+        for ($ix = 0; $ix < strlen($allLetters); $ix++){
+          $positions_to_delete = [$ix];
+          $matchArrayKeys = layer_search($allLetters, $dictionary, $matchArrayKeys, $ix, $positions_to_delete);
+          for ($iz = 1; $iz < strlen($allLetters); $iz++){
+            $position_addition = ($ix + $iz);
+            array_push($positions_to_delete, $position_addition);
+            $matchArrayKeys = layer_search($allLetters, $dictionary, $matchArrayKeys, $ix, $positions_to_delete);
+          }
+        }
+        return $matchArrayKeys;
+      }
+
 
       function add_to_possibilities($dictionary, $allLetters){
         $matchArrayKeys = [];
         $matchArrayKeys = checking_for_match($dictionary, $allLetters, $matchArrayKeys);
-        //for ($iy = 0; $iy < strlen($allLetters); $iy++){
+        for ($iy = 0; $iy < strlen($allLetters); $iy++){
           for ($ix = 0; $ix < strlen($allLetters); $ix++){
             $positions_to_delete = [$ix];
             $matchArrayKeys = layer_search($allLetters, $dictionary, $matchArrayKeys, $ix, $positions_to_delete);
@@ -122,16 +178,21 @@
               $matchArrayKeys = layer_search($allLetters, $dictionary, $matchArrayKeys, $ix, $positions_to_delete);
             }
           }
-        //}
+          $matchArrayKeys = layer_two_search($allLetters, $dictionary, $matchArrayKeys, $ix, $positions_to_delete);
+          $allLettersArray = str_split($allLetters);
+          $front = array_shift($allLettersArray);
+          $allLettersArray[-1] = $front;
+          $allLetters = implode($allLettersArray);
+        }
       return $matchArrayKeys;
       }
 
       $matchArrayKeys = add_to_possibilities($csvDic,$selectedLettersString);
 
+      $uniqueMatches = array_unique($matchArrayKeys);
 
-
-
-    var_dump($matchArrayKeys); die;
+      */
+    //  var_dump($uniqueMatches); die;
 
 
 
