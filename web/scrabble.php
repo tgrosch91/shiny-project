@@ -38,19 +38,18 @@
       $selectedLetters = $_POST["alphabet_letters"];
       preg_match_all("/[a-z]/i", $selectedLetters, $selectedLettersArrayLong);
       $selectedLettersArray = $selectedLettersArrayLong[0];
-      $letterCount = count($selectedLettersArray);
-      sort($selectedLettersArray);
+      //$letterCount = count($selectedLettersArray);
+      //sort($selectedLettersArray);
       $selectedLettersString = implode($selectedLettersArray);
 
 
       foreach ($csvDic as &$value){
-
         $value = trim($value);
       }
 
-      $csvDic = array_flip($csvDic);
+    //  $csvDic = array_flip($csvDic);
 
-      function alphabetize($key, $value)
+    /*  function alphabetize($key, $value)
       {
         $keyParts = str_split($key);
         sort($keyParts);
@@ -63,13 +62,33 @@
       foreach($csvDic as $key => $value){
         $newValue = alphabetize($key, $value);
         $csvDicSorted[$key] = $newValue;
+      } */
+
+      function custom_intersect($arrayOne, $arrayTwo){
+        sort($arrayOne);
+        sort($arrayTwo);
+        if ($arrayOne === $arrayTwo){
+          return $arrayTwo;
+        }
+        else{
+          $blank = "blank";
+          return $blank;
+        }
       }
 
 
+
+
       function checking_for_match($dictionary, $allLetters, $matchArrayKeys){
-        $potentialMatch = array_keys($dictionary, $allLetters);
-        if($potentialMatch != []){
-          array_push($matchArrayKeys,$potentialMatch);
+        $allLettersArray = str_split($allLetters);
+        $initial_count = count($allLettersArray);
+        foreach ($dictionary as $word){
+          $test_array = str_split($word);
+          $return_array = custom_intersect($allLettersArray, $test_array);
+          if($return_array != "blank"){
+            $matchString = implode($test_array);
+            array_push($matchArrayKeys,$matchString);
+          }
         }
         return $matchArrayKeys;
       }
@@ -93,19 +112,21 @@
       function add_to_possibilities($dictionary, $allLetters){
         $matchArrayKeys = [];
         $matchArrayKeys = checking_for_match($dictionary, $allLetters, $matchArrayKeys);
-        for ($ix = 0; $ix < strlen($allLetters); $ix++){
-          $positions_to_delete = [$ix];
-          $matchArrayKeys = layer_search($allLetters, $dictionary, $matchArrayKeys, $ix, $positions_to_delete);
-          for ($iz = 1; $iz < (strlen($allLetters) - $iz); $iz++){
-            $position_addition = ($ix + $iz);
-            array_push($positions_to_delete, $position_addition);
+        //for ($iy = 0; $iy < strlen($allLetters); $iy++){
+          for ($ix = 0; $ix < strlen($allLetters); $ix++){
+            $positions_to_delete = [$ix];
             $matchArrayKeys = layer_search($allLetters, $dictionary, $matchArrayKeys, $ix, $positions_to_delete);
+            for ($iz = 1; $iz < strlen($allLetters); $iz++){
+              $position_addition = ($ix + $iz);
+              array_push($positions_to_delete, $position_addition);
+              $matchArrayKeys = layer_search($allLetters, $dictionary, $matchArrayKeys, $ix, $positions_to_delete);
+            }
           }
-        }
-        return $matchArrayKeys;
+        //}
+      return $matchArrayKeys;
       }
 
-      $matchArrayKeys = add_to_possibilities($csvDicSorted,$selectedLettersString);
+      $matchArrayKeys = add_to_possibilities($csvDic,$selectedLettersString);
 
 
 
