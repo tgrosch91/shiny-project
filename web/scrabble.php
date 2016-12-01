@@ -42,10 +42,20 @@
       //sort($selectedLettersArray);
     //  $selectedLettersString = implode($selectedLettersArray);
 
-
-      foreach ($csvDic as $value){
+  /* function trim_spaces($dictionary){
+      foreach ($dictionary as $value){
         $value = trim($value);
+        //var_dump($value);die;
       }
+      return $dictionary;
+    }
+
+    $csvDicShort = trim_spaces($csvDic);
+    var_dump($csvDicShort);die;
+    */
+
+    $csvDicTrim = array_map('trim', $csvDic);
+    //var_dump($csvDicTrim);die;
 
     function test_word($wordArray, $letterInput){
       $match =[];
@@ -65,10 +75,10 @@
         //var_dump($existsList);die;
         $uniqueValues = count(array_unique($existsList));
         //var_dump($uniqueValues);die;
-        if ($uniqueValues === 1){
+        if ($uniqueValues === 1 and $existsList[0] === "True"){
         //  var_dump($uniqueValues);die;
           $word = implode($wordArray);
-          array_push($match, $word);
+          $match = $word;
         }
         return $match;
         //var_dump($match);die;
@@ -89,10 +99,11 @@
       //var_dump($matches);die;
     }
 
-$testdic = ["blue", "but", "blt"];
+$testdic = ["blue", "but", "blt", "iii"];
 $testinput = ["b", "l", "u", "t"];
 
-$test = test_and_add($testdic, $testinput);
+$test = test_and_add($csvDicTrim, $selectedLettersArray);
+//var_dump($selectedLettersArray);die;
 var_dump($test);die;
 
 
