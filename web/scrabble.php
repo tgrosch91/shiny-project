@@ -74,16 +74,29 @@
         return $matchArrayKeys;
       }
 
+      function layer_search($allLetters, $dictionary, $matchArrayKeys, $ix){
+          $allLettersArray = str_split($allLetters);
+          $positions_to_delete = [$ix];
+          $allLettersArray = delete_at_positions($allLettersArray, $positions_to_delete);
+          $allLettersShort = implode($allLettersArray);
+          $matchArrayKeys = checking_for_match($dictionary, $allLettersShort, $matchArrayKeys);
+          return $matchArrayKeys;
+      }
+
+      function delete_at_positions($array, $position_value_array){
+        foreach ($position_value_array as $position){
+          array_splice($array, $position , 1);
+        }
+        return $array;
+      }
+
 
       function add_to_possibilities($dictionary, $allLetters){
         $matchArrayKeys = [];
         $matchArrayKeys = checking_for_match($dictionary, $allLetters, $matchArrayKeys);
-        for ($i = 0; $i < strlen($allLetters); $i++){
-          $allLettersArray = str_split($allLetters);
-          unset($allLettersArray[$i]);
-          $allLettersShort = implode($allLettersArray);
-          $matchArrayKeys = checking_for_match($dictionary, $allLettersShort, $matchArrayKeys);
-          }
+        for ($ix = 0; $ix < strlen($allLetters); $ix++){
+          $matchArrayKeys = layer_search($allLetters, $dictionary, $matchArrayKeys, $ix);
+        }
         return $matchArrayKeys;
       }
 
