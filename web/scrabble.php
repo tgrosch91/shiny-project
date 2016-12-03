@@ -1,6 +1,4 @@
 <?php
-    ini_set('max_execution_time', 300);
-
     require("../includes/config.php");
     if ($_SERVER["REQUEST_METHOD"] == "GET")
     {
@@ -28,9 +26,15 @@
       $selectedLetters = $_POST["alphabet_letters"];
       preg_match_all("/[a-z]/i", $selectedLetters, $selectedLettersArrayLong);
       $selectedLettersArray = $selectedLettersArrayLong[0];
-      //$letterCount = count($selectedLettersArray);
-      //sort($selectedLettersArray);
-    //  $selectedLettersString = implode($selectedLettersArray);
+
+      $resultsCount = $_POST["table_count"];
+      preg_match_all("/\d*/", $resultsCount, $resultsArray);
+      $resultNumber = $resultsArray[0];
+      $resultNum = $resultNumber[0];
+      $resultNum = intval($resultNum);
+
+      //var_dump($resultNum);die;
+
 
 
 
@@ -102,8 +106,35 @@ function order_by_value($matchValues, $letterValues){
   return($matchValuesFlipped);
   }
 
-$result = order_by_value($matchValues, $letterValueArray);
-var_dump($result);die;
+$results = order_by_value($matchValues, $letterValueArray);
+function limit_results($results, $resultNumber){
+  if ($resultNumber == null){
+    $resultNumber = 10;
+  }
+  $shortResults = [];
+  if (count($results) < $resultNumber){
+    return $results;
+  }
+  else{
+    $shortResults = array_slice($results , 0 , $resultNumber, true);
+    return $shortResults;
+  }
+}
+
+$shortResults = limit_results($results, $resultNum);
+//var_dump($shortResults);die;
+
+$headers = ["Word", "Value"];
+$data = [];
+
+foreach($shortResults as $resultWord => $resultValue){
+    $newRow = [];
+    $newRow[$resultWord] = $resultValue;
+    $data[] = $newRow;
+}
+
+//var_dump($data);die;
+render("scrabble_page.php", ["data" => $data, "keys" => $headers, "title" => "Scrabble Results"]);
 
 
     //  $csvDic = array_flip($csvDic);

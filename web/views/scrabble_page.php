@@ -19,9 +19,44 @@
       <input type="text" name = "alphabet_letters" class="form-control" placeholder="ex: a, b, c, c">
     </div>
     <div class="form-group">
+      <label for="formGroupExampleInput2">Enter Number of Results</label>
+      <input type="text" name = "table_count" class="form-control" placeholder="ex: 15">
+    </div>
+    <div class="form-group">
         <button class="btn btn-default" type="submit">View Options</button>
     </div>
 </form>
 
 
+</div>
+<?php if(!empty($data)): ?>
+    <table class = "table table-bordered">
+      <thead>
+        <tr>
+          <?php foreach($keys as $key): ?>
+            <?php switch($key):
+            case "Word": ?>
+            <th class="player">Word</th>
+            <?php break;?>
+            <?php case "Value": ?>
+            <th class="player">Value</th>
+            <?php break;?>
+            <?php endswitch ?>
+          <?php endforeach ?>
+        </tr>
+      </thead>
+      <tbody class = "players-table">
+          <?php foreach($data as $result): ?>
+              <tr>
+                  <?php foreach($result as $key=>$value): ?>
+                      <td><?= $key?></td>
+                  <?php endforeach ?>
+                <?php foreach($result as $key=>$value): ?>
+                    <td><?= $value?></td>
+                <?php endforeach ?>
+              </tr>
+          <?php endforeach ?>
+      </tbody>
+    </table>
+<?php endif ?>
 </div>
