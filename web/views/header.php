@@ -33,6 +33,7 @@
               <li><a href="scrabble.php">Scrabble&trade;</a></li>
               <li><a href="sports.php">Sports Stats</a></li>
               <li><a href="youtube.php">Youtube</a></li>
+              <li><a href="bands.php">Find Bands</a></li>
           </ul>
         </div>
 
