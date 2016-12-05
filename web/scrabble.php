@@ -25,7 +25,12 @@
 
       $selectedLetters = $_POST["alphabet_letters"];
       preg_match_all("/[a-z]/i", $selectedLetters, $selectedLettersArrayLong);
-      $selectedLettersArray = $selectedLettersArrayLong[0];
+      $selectedLettersArrayMixed = $selectedLettersArrayLong[0];
+      $selectedLettersArray = [];
+      foreach ($selectedLettersArrayMixed as $letter){
+        $letterLower = strtolower($letter);
+        array_push($selectedLettersArray, $letterLower);
+      }
 
       $resultsCount = $_POST["table_count"];
       preg_match_all("/\d*/", $resultsCount, $resultsArray);
