@@ -23,6 +23,8 @@
         <script src="js/bootstrap.min.js"></script>
 
         <script src="js/youtube-scripts.js"></script>
+        
+        <script src="js/ign-scripts.js"></script>
 
     </head>
 
@@ -34,6 +36,7 @@
               <li><a href="sports.php">Sports Stats</a></li>
               <li><a href="youtube.php">Youtube</a></li>
               <li><a href="bands.php">Find Bands</a></li>
+              <li><a href="ign.php">IGN API</a></li>
           </ul>
         </div>
 
