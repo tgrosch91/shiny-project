@@ -6,10 +6,11 @@
     Enjoy articles and videos from IGN. Hover over the link to see the corresponding image!
   </div>
   <div class="ign-search">
-    Search for something:
-    <input type="text" class="input-ign" />
-    <div class="btn btn-primary submit-ign">
-      Search!
+    <div id = "article-choice" class="btn btn-primary submit-ign">
+      Articles
+    </div>
+    <div id = "video-choice"class="btn btn-primary submit-ign">
+      Videos
     </div>
     <div class="results-ign container">
     </div>

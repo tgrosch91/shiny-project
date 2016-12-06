@@ -4,12 +4,10 @@ $(document).ready(function(){
  const  startIndex = '1',
         count = '10';
 
-  var pageToken = '';
-  $('.submit-ign').on('click', function() {
+  $('#article-choice').on('click', function() {
     $('.results-ign').empty();
-    $('.more-ign').html("SEE MORE ARTICLES").removeClass('hidden');
+    //$('.more-ign').html("SEE MORE ARTICLES").removeClass('hidden');
 
-    pageToken = '';
     var query = $('.input-ign').val();
     var url = "http://ign-apis.herokuapp.com/"
     $.getJSON(url, function(data){
