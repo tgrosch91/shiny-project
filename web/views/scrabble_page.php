@@ -10,7 +10,6 @@
           <option value = "../includes/ospd.csv">Official Scrabble Player's Dictionary</option>
           <option value = "../includes/enable1dictionary.csv">Enable</option>
           <option value = "../includes/web2dictionary.csv">Webster's New International</option>
-          <option value = "../includes/mbsingledictionary.csv">Moby Words</option>
           <option value = "../includes/unixdict.csv">UNIX</option>
         </select>
     </div>
@@ -20,7 +19,7 @@
     </div>
     <div class="form-group">
       <label for="formGroupExampleInput2">Enter Number of Results</label>
-      <input type="text" name = "table_count" class="form-control" placeholder="ex: 15">
+      <input type="number" name = "table_count" class="form-control" placeholder="ex: 15">
     </div>
     <div class="form-group">
         <button class="btn btn-default" type="submit">View Options</button>
