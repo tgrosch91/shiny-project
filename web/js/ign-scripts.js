@@ -56,8 +56,13 @@ $(document).ready(function(){
         });
       };
     });
-  });
-  
+});
+});
+});
+});
+
+
+
 /*
   $('.more-ign').on('click', function(){
     var url = "https://newsapi.org/v1/articles?source="+source+"&sortBy="+sortBy+"&apiKey="+key;

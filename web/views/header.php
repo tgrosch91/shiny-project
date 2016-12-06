@@ -23,7 +23,7 @@
         <script src="js/bootstrap.min.js"></script>
 
         <script src="js/youtube-scripts.js"></script>
-        
+
         <script src="js/ign-scripts.js"></script>
 
     </head>
