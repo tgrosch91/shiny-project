@@ -4,11 +4,15 @@
 // things to be fixed: make pretty, obviously. the view more buttons seem to switch back and forth. will go back and forth from getting the year to getting the video duration. also how do i get it to automatically view the articles. also have to convert dates and durations to acceptable format. also the hover thing.
 $(document).ready(function(){
 
-var startIndex = 1;
 
   $('#article-choice').on('click', function() {
-    $('.results-ign').empty();
-    $('.more-ign').html("SEE MORE ARTICLES").removeClass('hidden');
+    $('.results-article').empty();
+    $('.results-video').empty();
+    $('.results-article').removeClass('hidden');
+    $('.results-video').addClass('hidden');
+    $('.more-videos').addClass('hidden');
+    $('.more-articles').html("SEE MORE ARTICLES").removeClass('hidden');
+    var startIndex = 1;
 
     var url = "http://ign-apis.herokuapp.com/articles?startIndex="+startIndex+"&count=10&callback=?"
 
@@ -26,7 +30,7 @@ var startIndex = 1;
                 day = datearray[2],
                 link = "http://www.ign.com/articles/"+year+"/"+month+"/"+day+"/"+slug;
 
-                $('.results-ign').append("<a class='item-ign' style='background-image:linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(" + imageUrl + ");' href='"
+                $('.results-article').append("<a class='item-ign' style='background-image:linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(" + imageUrl + ");' href='"
                         + link + "'><div class='details-ign'><div class='title-ign'>"
                         + head + "</div><div class='description-ign'>"
                         + subhead + "</div><div class='title-ign'>"
@@ -36,7 +40,11 @@ var startIndex = 1;
         });
 
 
-          $('.more-ign').on('click', function(){
+          $('.more-articles').on('click', function(){
+            $('.results-video').empty();
+            $('.results-video').addClass('hidden');
+            $('.more-videos').addClass('hidden');
+
             startIndex += 10;
             var url = "http://ign-apis.herokuapp.com/articles?startIndex="+startIndex+"&count=10&callback=?"
 
@@ -54,7 +62,7 @@ var startIndex = 1;
                         day = datearray[2],
                         link = "http://www.ign.com/articles/"+year+"/"+month+"/"+day+"/"+slug;
 
-                        $('.results-ign').append("<a class='item-ign' style='background-image:linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(" + imageUrl + ");' href='"
+                        $('.results-article').append("<a class='item-ign' style='background-image:linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(" + imageUrl + ");' href='"
                                 + link + "'><div class='details-ign'><div class='title-ign'>"
                                 + head + "</div><div class='description-ign'>"
                                 + subhead + "</div><div class='title-ign'>"
@@ -67,8 +75,14 @@ var startIndex = 1;
       });
 
       $('#video-choice').on('click', function() {
-        $('.results-ign').empty();
-        $('.more-ign').html("SEE MORE VIDEOS").removeClass('hidden');
+        $('.results-video').empty();
+        $('.results-article').empty();
+        $('.results-video').removeClass('hidden');
+        $('.results-articles').addClass('hidden');
+        $('.more-videos').html("SEE MORE VIDEOS").removeClass('hidden');
+        $('.more-articles').addClass('hidden');
+        var startIndex = 1;
+
 
         var url = "http://ign-apis.herokuapp.com/videos?startIndex="+startIndex+"&count=10&callback=?"
 
@@ -81,7 +95,7 @@ var startIndex = 1;
                     subhead = item.metadata.description,
                     time = item.metadata.duration;
 
-                    $('.results-ign').append("<a class='item-ign' style='background-image:linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(" + imageUrl + ");' href='"
+                    $('.results-video').append("<a class='item-ign' style='background-image:linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(" + imageUrl + ");' href='"
                             + link + "'><div class='details-ign'><div class='title-ign'>"
                             + head + "</div><div class='description-ign'>"
                             + subhead+ "</div><div class='title-ign'>"
@@ -89,7 +103,10 @@ var startIndex = 1;
 
               });
             });
-            $('.more-ign').on('click', function(){
+            $('.more-videos').on('click', function(){
+              $('.results-article').empty();
+              $('.results-articles').addClass('hidden');
+              $('.more-articles').addClass('hidden');
               startIndex += 10;
               var url = "http://ign-apis.herokuapp.com/videos?startIndex="+startIndex+"&count=10&callback=?"
 
@@ -102,7 +119,7 @@ var startIndex = 1;
                           subhead = item.metadata.description,
                           time = item.metadata.duration;
 
-                          $('.results-ign').append("<a class='item-ign' style='background-image:linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(" + imageUrl + ");' href='"
+                          $('.results-video').append("<a class='item-ign' style='background-image:linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(" + imageUrl + ");' href='"
                                   + link + "'><div class='details-ign'><div class='title-ign'>"
                                   + head + "</div><div class='description-ign'>"
                                   + subhead+ "</div><div class='title-ign'>"

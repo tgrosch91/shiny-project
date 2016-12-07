@@ -12,8 +12,11 @@
     <div id = "video-choice"class="btn btn-primary submit-ign">
       Videos
     </div>
-    <div class="results-ign container">
+    <div class="results-article container hidden">
     </div>
-    <div class="btn btn-info hidden more-ign"></div>
+    <div class="results-video container hidden">
+    </div>
+    <div class="btn hidden more-articles"></div>
+    <div class="btn hidden more-videos"></div>
   </div>
 </div>

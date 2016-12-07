@@ -174,7 +174,12 @@ body
   margin:5px;
 }
 
-.results-ign
+.results-article
+{
+  width:720px;
+  margin:auto;
+}
+.results-video
 {
   width:720px;
   margin:auto;
@@ -201,4 +206,9 @@ body
 {
   margin-top: 150px;
   padding: 0px 10px;
+}
+
+.hidden
+{
+  display: none;
 }
