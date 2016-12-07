@@ -1,7 +1,7 @@
 //starts functions when document is loaded
 
 
-// things to be fixed: make pretty, obviously. the view more buttons seem to switch back and forth. will go back and forth from getting the year to getting the video duration. also how do i get it to automatically view the articles. also have to convert dates and durations to acceptable format. also the hover thing.
+// things to be fixed: make pretty, obviously.  also how do i get it to automatically view the articles. also have to convert dates and durations to acceptable format. also the hover thing. also fix when subhead is undefined
 $(document).ready(function(){
 
 
@@ -38,6 +38,7 @@ $(document).ready(function(){
 
           });
         });
+      });
 
 
           $('.more-articles').on('click', function(){
@@ -45,7 +46,8 @@ $(document).ready(function(){
             $('.results-video').addClass('hidden');
             $('.more-videos').addClass('hidden');
 
-            startIndex += 10;
+            var startIndex = $('.item-ign').size()+1;
+
             var url = "http://ign-apis.herokuapp.com/articles?startIndex="+startIndex+"&count=10&callback=?"
 
                 $.getJSON(url, function(data){
@@ -71,8 +73,6 @@ $(document).ready(function(){
                   });
                 });
               });
-
-      });
 
       $('#video-choice').on('click', function() {
         $('.results-video').empty();
@@ -103,11 +103,14 @@ $(document).ready(function(){
 
               });
             });
+          });
+
             $('.more-videos').on('click', function(){
               $('.results-article').empty();
               $('.results-articles').addClass('hidden');
               $('.more-articles').addClass('hidden');
-              startIndex += 10;
+              var startIndex = $('.item-ign').size()+1;
+
               var url = "http://ign-apis.herokuapp.com/videos?startIndex="+startIndex+"&count=10&callback=?"
 
                   $.getJSON(url, function(data){
@@ -128,7 +131,5 @@ $(document).ready(function(){
                     });
                   });
                 });
-
-          });
 
     });
