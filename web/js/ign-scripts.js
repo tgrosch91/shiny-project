@@ -8,36 +8,33 @@ $(document).ready(function(){
     $('.results-ign').empty();
     //$('.more-ign').html("SEE MORE ARTICLES").removeClass('hidden');
 
-    var query = $('.input-ign').val();
-    var url = "http://ign-apis.herokuapp.com/"
-    $.getJSON(url, function(data){
-
-      data.endpoints.forEach(function(endpoint){
-        var endpointquest = endpoint;
-        var url = "http://ign-apis.herokuapp.com"+endpointquest+"?startIndex="+startIndex+"&count="+count;
+    var url = "http://ign-apis.herokuapp.com/articles?startIndex=1&count=10&callback=?"
 
         $.getJSON(url, function(data){
 
-          if (endpointquest == "/articles"){
-
-          data.forEach(function(item){
+          data.data.forEach(function(item){
             var imageUrl = item.thumbnail,
                 slug = item.metadata.slug,
-                longdate = item.metadata.publishDate,
+                date = item.metadata.publishDate,
                 head = item.metadata.headline,
                 subhead = item.metadata.subHeadline,
-                shortdate = longdate.split(/[\d|-]+/),
-                link = "http://www.ign.com/articles/"+shortdate+"/"+slug;
-
+                datearray = date.split(/-|[A-Z]/g),
+                year = datearray[0],
+                month = datearray[1],
+                day = datearray[2],
+                link = "http://www.ign.com/articles/"+year+"/"+month+"/"+day+"/"+slug;
 
                 $('.results-ign').append("<a class='item-ign' style='background-image:linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(" + imageUrl + ");' href='"
-                        + link + "'><div class='details-ign'><div class='title-ign>"
+                        + link + "'><div class='details-ign'><div class='title-ign'>"
                         + head + "</div><div class='description-youtube'>"
                         + subhead + "</div></div></a>");
 
           });
-        };
+        });
+      });
+    });
 
+/*
           if (endpointquest == "/videos"){
 
             data.forEach(function(item){
@@ -51,13 +48,12 @@ $(document).ready(function(){
                           + link + "'><div class='details-ign'><div class='title-ign'>"
                           + head + "</div><div class='description-ign'>"
                           + subhead+ "</div></div></a>");
-        });
-      };
+              });
+            };
     });
 });
 });
-});
-});
+*/
 
 
 
