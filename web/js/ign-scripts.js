@@ -31,10 +31,11 @@ $(document).ready(function(){
                 link = "http://www.ign.com/articles/"+year+"/"+month+"/"+day+"/"+slug;
 
                 $('.results-article').append("<a class='item-ign' style='background-image:linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(" + imageUrl + ");' href='"
-                        + link + "'><div class='details-ign'><div class='title-ign'>"
+                        + link + "'></a><div class='details-ign'><div class='title-ign'>"
                         + head + "</div><div class='description-ign'>"
                         + subhead + "</div><div class='title-ign'>"
-                        + year + "</div></div></a>");
+                        + year + "</div></div>");
+                $('.item-ign').addClass('hidden');
 
           });
         });
@@ -65,10 +66,11 @@ $(document).ready(function(){
                         link = "http://www.ign.com/articles/"+year+"/"+month+"/"+day+"/"+slug;
 
                         $('.results-article').append("<a class='item-ign' style='background-image:linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(" + imageUrl + ");' href='"
-                                + link + "'><div class='details-ign'><div class='title-ign'>"
+                                + link + "'></a><div class='details-ign'><div class='title-ign'>"
                                 + head + "</div><div class='description-ign'>"
                                 + subhead + "</div><div class='title-ign'>"
-                                + year + "</div></div></a>");
+                                + year + "</div></div>");
+                        $('.item-ign').addClass('hidden');
 
                   });
                 });
@@ -96,10 +98,11 @@ $(document).ready(function(){
                     time = item.metadata.duration;
 
                     $('.results-video').append("<a class='item-ign' style='background-image:linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(" + imageUrl + ");' href='"
-                            + link + "'><div class='details-ign'><div class='title-ign'>"
+                            + link + "'></a><div class='details-ign'><div class='title-ign'>"
                             + head + "</div><div class='description-ign'>"
                             + subhead+ "</div><div class='title-ign'>"
-                            + time + "</div></div></a>");
+                            + time + "</div></div>");
+                    $('.item-ign').addClass('hidden');
 
               });
             });
@@ -123,10 +126,11 @@ $(document).ready(function(){
                           time = item.metadata.duration;
 
                           $('.results-video').append("<a class='item-ign' style='background-image:linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(" + imageUrl + ");' href='"
-                                  + link + "'><div class='details-ign'><div class='title-ign'>"
+                                  + link + "'></a><div class='details-ign'><div class='title-ign'>"
                                   + head + "</div><div class='description-ign'>"
                                   + subhead+ "</div><div class='title-ign'>"
-                                  + time + "</div></div></a>");
+                                  + time + "</div></div>");
+                          $('.item-ign').addClass('hidden');
 
                     });
                   });

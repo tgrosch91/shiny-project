@@ -6,8 +6,8 @@
         <!-- viewport to make things more responsive -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <!-- http://getbootstrap.com/ -->
-        <link href="css/bootstrap.min.css" rel="stylesheet"/>
 
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
         <link href="css/styles.css" rel="stylesheet"/>
 
         <?php if (isset($title)): ?>
