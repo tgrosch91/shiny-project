@@ -1,7 +1,7 @@
 //starts functions when document is loaded
 
 
-// things to be fixed: make pretty, obviously.  also how do i get it to automatically view the articles. also have to convert dates and durations to acceptable format. also the hover thing. also fix when subhead is undefined
+// things to be fixed: make pretty, obviously. also have to convert dates and durations to acceptable format. also the hover thing. also fix when subhead is undefined
 $(document).ready(function(){
 
 
