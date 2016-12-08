@@ -136,4 +136,8 @@ $(document).ready(function(){
                   });
                 });
 
+          $('.item-ign').hover(
+            function(){$('.item-ign').toggleClass('hidden')});
+
+
     });
