@@ -5,14 +5,15 @@
   <div class="ign-page-description">
     Enjoy articles and videos from IGN. Hover over the link to see the corresponding image!
   </div>
+  <div class = "playlist">
   <div class = "btn-group">
-  <div class="btn-group btn-group-xs" role="group">
-    <div id = "article-choice" class=" btn btn-default submit-ign">
+  <div class="btn-group" role="group">
+    <div id = "article-choice" class="btn-default btn-left submit-ign">
       Articles
     </div>
   </div>
-  <div class="btn-group btn-group-xs" role="group">
-    <div id = "video-choice"class="btn btn-default submit-ign">
+  <div class="btn-group " role="group">
+    <div id = "video-choice"class="btn-default btn-right submit-ign">
       Videos
     </div>
   </div>

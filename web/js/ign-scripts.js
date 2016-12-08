@@ -3,7 +3,11 @@
 
 // things to be fixed: make pretty, obviously. also have to convert dates and durations to acceptable format. also the hover thing. also fix when subhead is undefined
 $(document).ready(function(){
-
+  $('a.item-ign').hover(
+    function(){$('a.item-ign').removeClass('hiddenone');
+  },
+    function(){$('a.item-ign').addClass('hiddenone');
+      });
 
   $('#article-choice').on('click', function() {
     $('.results-article').empty();
@@ -30,12 +34,13 @@ $(document).ready(function(){
                 day = datearray[2],
                 link = "http://www.ign.com/articles/"+year+"/"+month+"/"+day+"/"+slug;
 
-                $('.results-article').append("<a class='item-ign' style='background-image:linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(" + imageUrl + ");' href='"
-                        + link + "'></a><div class='details-ign'><div class='title-ign'>"
-                        + head + "</div><div class='description-ign'>"
-                        + subhead + "</div><div class='title-ign'>"
-                        + year + "</div></div>");
-                $('.item-ign').addClass('hidden');
+                $('.results-article').append("<div class= 'item-ign'><a class='picture-link-ign' style='background-image:linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(" + imageUrl + ");' href='"
+                    + link + "'></a><div class='details-ign'><div class='title-ign'>"
+                    + head + "</div><div class='description-ign'>"
+                    + subhead + "</div><div class='title-ign'>"
+                    + year + "</div></div></div>");
+
+              //  $('.item-ign').addClass('hiddenone');
 
           });
         });
@@ -70,7 +75,7 @@ $(document).ready(function(){
                                 + head + "</div><div class='description-ign'>"
                                 + subhead + "</div><div class='title-ign'>"
                                 + year + "</div></div>");
-                        $('.item-ign').addClass('hidden');
+                        //$('.item-ign').addClass('hiddenone');
 
                   });
                 });
@@ -102,7 +107,7 @@ $(document).ready(function(){
                             + head + "</div><div class='description-ign'>"
                             + subhead+ "</div><div class='title-ign'>"
                             + time + "</div></div>");
-                    $('.item-ign').addClass('hidden');
+                  //  $('.item-ign').addClass('hiddenone');
 
               });
             });
@@ -130,14 +135,13 @@ $(document).ready(function(){
                                   + head + "</div><div class='description-ign'>"
                                   + subhead+ "</div><div class='title-ign'>"
                                   + time + "</div></div>");
-                          $('.item-ign').addClass('hidden');
+                        //  $('.item-ign').addClass('hiddenone');
 
                     });
                   });
                 });
 
-          $('.item-ign').hover(
-            function(){$('.item-ign').toggleClass('hidden')});
+
 
 
     });
