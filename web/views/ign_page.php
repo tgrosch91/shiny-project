@@ -9,12 +9,12 @@
   <div class = "btn-group">
   <div class="btn-group" role="group">
     <div id = "article-choice" class="btn-default btn-left submit-ign">
-      Articles
+      ARTICLES
     </div>
   </div>
   <div class="btn-group " role="group">
     <div id = "video-choice"class="btn-default btn-right submit-ign">
-      Videos
+      VIDEOS
     </div>
   </div>
   </div>

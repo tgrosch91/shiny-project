@@ -34,11 +34,14 @@ $(document).ready(function(){
                 day = datearray[2],
                 link = "http://www.ign.com/articles/"+year+"/"+month+"/"+day+"/"+slug;
 
-                $('.results-article').append("<div class= 'item-ign'><a class='picture-link-ign' style='background-image:linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(" + imageUrl + ");' href='"
-                    + link + "'></a><div class='details-ign'><div class='title-ign'>"
-                    + head + "</div><div class='description-ign'>"
-                    + subhead + "</div><div class='title-ign'>"
-                    + year + "</div></div></div>");
+                $('.results-article').append("<div class='item-ign'><div class= 'count'>1</div><div class='details-ign'><div><div class='title-ign'>"
+                    + head + "</div></div><div><div class='description-ign'>"
+                    + subhead + "</div></div><div class='date-ign'>"
+                    + year + "</div></div></a><a class='item-ign picture-link-ign' style='background-image:linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(" + imageUrl + ");' href='"
+                        + link + "'><div class= 'count'>1</div><div class='details-ign'><div><div class='title-ign'>"
+                        + head + "</div></div><div><div class='description-ign'>"
+                        + subhead + "</div></div><div class='date-ign'>"
+                        + year + "</div></div></a>");
 
               //  $('.item-ign').addClass('hiddenone');
 

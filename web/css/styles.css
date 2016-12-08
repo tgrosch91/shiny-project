@@ -173,13 +173,19 @@ body
   background-repeat:no-repeat;
   background-size: 120%;
   border-bottom: 1px solid #ccc;
-  padding: .42em 1em .42em 0;
   display:block;
   position:relative;
-  line-height:20px;
   width: 350px;
   float: left;
   margin:5px;
+}
+
+.picture-link-ign .title-ign{
+color:white;
+}
+
+.picture-link-ign .description-ign{
+color:gray;
 }
 
 .results-article
@@ -204,13 +210,16 @@ body
   border-color: rgb(191,19,19);
   border-style: solid;
   border-width: 1px 1px 1px 1px;
-  width: 100px;
-  height: 20px;
+  width: 120px;
+  height: auto;
   margin-left: auto;
   margin-right: auto;
   margin-top: auto;
   margin-bottom: auto;
-  padding: 0;
+  padding: 3px;
+  font-weight: bold;
+  font-size: .76em;
+  color: rgb(191,19,19);
 }
 
 .btn-left{
@@ -226,40 +235,43 @@ body
 }
 
 
-
-.details-ign
-{
-  background-size:150%;
-  background-position-x:50%;
-  background-position-y:50%;
-  background-repeat:no-repeat;
-  background-size: 120%;
-  border-bottom: 1px solid #ccc;
-  padding: .42em 1em .42em 0;
-  display:block;
-  position:relative;
-  line-height:20px;
-  width: 350px;
-  float: left;
-  margin:5px;
-}
-
-.title-ign, .description-ign
+.item-ign .title-ign
 {
   white-space: nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
+  float:left;
+  font-size: .88em;
+}
+
+.item-ign .details-ign
+{
+  white-space: nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  float:left;
+  font-size: .76em;
+}
+.count{
+  font-weight: bold;
+  font-size: .76em;
+  float: left;
+}
+.title-ign{
+  font-weight:bold;
+  float:left;
 }
 .description-ign
 {
-  padding: 0px 10px;
+  float:left;
+}
+.date-ign{
+  display:block;
+  float:right;
+  font-size: .7em;
+  color: #8a8a8a;
 }
 
-
-.hiddenone
-{
-  display: none;
-}
 
 .playlist{
   /* center contents */
