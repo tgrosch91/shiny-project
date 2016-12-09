@@ -23,6 +23,7 @@ body
 {
   text-align: center;
   min-height:500px;
+
 }
 
 #bottom
@@ -34,6 +35,15 @@ body
   height:50px;
 }
 
+.container-ign
+{
+  /* center contents */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  background-image: url('../images/body_bg.gif');
+  padding-bottom: 50px;
+}
 
 
 .nav
@@ -162,10 +172,11 @@ body
 
 .ign-page-description
 {
-  margin:5px 0;
+  margin:15px;
+  color:white;
 }
 
-.item-ign
+.background-switch:hover
 {
   background-size:150%;
   background-position-x:50%;
@@ -175,38 +186,50 @@ body
   border-bottom: 1px solid #ccc;
   display:block;
   position:relative;
-  width: 350px;
+  width: 340px;
+  height: 50px;
   float: left;
-  margin:5px;
 }
 
-.picture-link-ign .title-ign{
-color:white;
+.background-switch
+{
+  background-size:150%;
+  background-position-x:-500%;
+  background-position-y:50%;
+  background-repeat:no-repeat;
+  background-size: 120%;
+  border-bottom: 1px solid #ccc;
+  display:block;
+  position:relative;
+  width: 340px;
+  height: 50px;
+  float: left;
 }
 
-.picture-link-ign .description-ign{
-color:gray;
+
+
+.item-ign
+{
+  width: 340px;
 }
+
+
 
 .results-article
 {
-  width:360px;
+  width:340px;
   background-color: white;
   margin:auto;
 }
 .results-video
 {
-  width:360px;
+  width:340px;
   background-color: white;
   margin:auto;
 }
 
-.item-ign:hover
-{
-    visibility:visible;
-}
 
-.btn-default{
+.btn-special{
   border-color: rgb(191,19,19);
   border-style: solid;
   border-width: 1px 1px 1px 1px;
@@ -222,6 +245,27 @@ color:gray;
   color: rgb(191,19,19);
 }
 
+.btn-special:hover {
+  text-decoration: underline;
+}
+
+.btn-special-pushed{
+  border-color: rgb(191,19,19);
+  border-style: solid;
+  border-width: 1px 1px 1px 1px;
+  width: 120px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 3px;
+  font-weight: bold;
+  font-size: .76em;
+  color: white;
+  background-color: rgb(191,19,19);
+}
+
 .btn-left{
   border-radius: 16px 0px 0px 16px;
 }
@@ -235,50 +279,127 @@ color:gray;
 }
 
 
-.item-ign .title-ign
-{
-  white-space: nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  float:left;
-  font-size: .88em;
+
+.background-switch:hover .count{
+  font-weight: bold;
+  font-size: .76em;
+  float: left;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 5px;
+  color:white;
 }
 
-.item-ign .details-ign
-{
-  white-space: nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  float:left;
-  font-size: .76em;
-}
 .count{
   font-weight: bold;
   font-size: .76em;
   float: left;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 5px;
+  color:black;
 }
+.background-switch:hover .title-ign{
+  font-weight:bold;
+  float:left;
+  white-space: nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  font-size: .76em;
+  color:black;
+  width: 240px;
+  margin-top: 7px;
+  text-align: left;
+}
+
 .title-ign{
   font-weight:bold;
   float:left;
-}
-.description-ign
-{
-  float:left;
-}
-.date-ign{
-  display:block;
-  float:right;
-  font-size: .7em;
-  color: #8a8a8a;
+  white-space: nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  font-size: .76em;
+  color:black;
+  width: 240px;
+  margin-top: 7px;
+  text-align: left;
 }
 
+.description-ign{
+  float:left;
+  white-space: nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  font-size: .76em;
+  color:grey;
+  width:240px;
+  margin-bottom: 7px;
+  margin-top: 5px;
+  text-align: left;
+  margin-left: 42px;
+}
+.background-switch:hover .date-ign{
+  float:right;
+  font-size: .76em;
+  font-weight: bold;
+  color: grey;
+  margin-right: 10px;
+}
+
+.date-ign{
+  float:right;
+  font-size: .76em;
+  font-weight: bold;
+  color: grey;
+  margin-right: 10px;
+}
+
+.month{
+  margin-top: -15px;
+}
+.year{
+  margin-bottom: -15px;
+}
+
+.details-ign{
+  display:block;
+}
+
+.playlist-row{
+  display:inline;
+  width:340px;
+  display: inline;
+  height:50px;
+  background-color:white;
+}
+
+.btn-end{
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 10px;
+  color:grey;
+  font-weight: bold;
+  line-height: 1.2;
+  text-align: left;
+  white-space: nowrap;
+  vertical-align: left;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
 
 .playlist{
-  /* center contents */
-  border-radius: 5px;
+  background-color: white;
+  width:340px;
+  border-radius: 10px;
   margin-left: auto;
   margin-right: auto;
-  padding: 0;
-  background-color: white;
-  width: 360px;
 }

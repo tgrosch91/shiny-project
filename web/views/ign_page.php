@@ -1,4 +1,4 @@
-<div class="container scrabble">
+<div class="container-ign">
   <div class="ign-header">
     Articles and Videos from IGN API
   </div>
@@ -8,12 +8,12 @@
   <div class = "playlist">
   <div class = "btn-group">
   <div class="btn-group" role="group">
-    <div id = "article-choice" class="btn-default btn-left submit-ign">
+    <div id = "article-choice" class="btn-special btn-left submit-ign">
       ARTICLES
     </div>
   </div>
   <div class="btn-group " role="group">
-    <div id = "video-choice"class="btn-default btn-right submit-ign">
+    <div id = "video-choice"class="btn-special btn-right submit-ign">
       VIDEOS
     </div>
   </div>
@@ -22,7 +22,7 @@
     </div>
     <div class="results-video container hidden">
     </div>
-    <div class="btn hidden more-articles"></div>
-    <div class="btn hidden more-videos"></div>
+    <div class="btn-end hidden more-articles"></div>
+    <div class="btn-end hidden more-videos"></div>
   </div>
 </div>
