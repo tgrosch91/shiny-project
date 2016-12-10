@@ -38,6 +38,7 @@
               <li><a href="youtube.php">Youtube</a></li>
               <li><a href="bands.php">Find Bands</a></li>
               <li><a href="ign.php">IGN API</a></li>
+              <li><a href="convertdate.php">Convert Date</a></li>
           </ul>
         </div>
 
