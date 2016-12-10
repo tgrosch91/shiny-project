@@ -6,8 +6,8 @@
         <!-- viewport to make things more responsive -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <!-- http://getbootstrap.com/ -->
-        <link href="css/bootstrap.min.css" rel="stylesheet"/>
 
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
         <link href="css/styles.css" rel="stylesheet"/>
 
         <?php if (isset($title)): ?>
@@ -24,6 +24,9 @@
 
         <script src="js/youtube-scripts.js"></script>
 
+        <script src="js/ign-scripts.js"></script>
+
+
     </head>
 
     <body>
@@ -34,6 +37,8 @@
               <li><a href="sports.php">Sports Stats</a></li>
               <li><a href="youtube.php">Youtube</a></li>
               <li><a href="bands.php">Find Bands</a></li>
+              <li><a href="ign.php">IGN API</a></li>
+              <li><a href="convertdate.php">Convert Dates</a></li>
           </ul>
         </div>
 
