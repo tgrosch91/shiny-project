@@ -20,7 +20,7 @@ $(document).ready(function(){
     $('.more-articles').html("SEE MORE ARTICLES").removeClass('hidden');
     var startIndex = 1;
 
-    var url = "http://ign-apis.herokuapp.com/articles?startIndex="+startIndex+"&count=10&callback=?"
+    var url = "https://ign-apis.herokuapp.com/articles?startIndex="+startIndex+"&count=10&callback=?"
 
         $.getJSON(url, function(data){
 
@@ -34,7 +34,7 @@ $(document).ready(function(){
                 year = datearray[0],
                 month = parseInt(datearray[1]),
                 day = datearray[2],
-                link = "http://www.ign.com/articles/"+year+"/"+month+"/"+day+"/"+slug;
+                link = "https://www.ign.com/articles/"+year+"/"+month+"/"+day+"/"+slug;
 
                 if (subhead == null) {
                   subhead = head
@@ -62,7 +62,7 @@ $(document).ready(function(){
 
             var startIndex = $('.item-ign').size()+1;
 
-            var url = "http://ign-apis.herokuapp.com/articles?startIndex="+startIndex+"&count=10&callback=?"
+            var url = "https://ign-apis.herokuapp.com/articles?startIndex="+startIndex+"&count=10&callback=?"
 
                 $.getJSON(url, function(data){
 
@@ -76,7 +76,7 @@ $(document).ready(function(){
                         year = datearray[0],
                         month = datearray[1],
                         day = datearray[2],
-                        link = "http://www.ign.com/articles/"+year+"/"+month+"/"+day+"/"+slug;
+                        link = "https://www.ign.com/articles/"+year+"/"+month+"/"+day+"/"+slug;
 
                         if (subhead == null) {
                           subhead = head
@@ -108,7 +108,7 @@ $(document).ready(function(){
         var startIndex = 1;
 
 
-        var url = "http://ign-apis.herokuapp.com/videos?startIndex="+startIndex+"&count=10&callback=?"
+        var url = "https://ign-apis.herokuapp.com/videos?startIndex="+startIndex+"&count=10&callback=?"
 
             $.getJSON(url, function(data){
 
@@ -149,7 +149,7 @@ $(document).ready(function(){
               $('.more-articles').addClass('hidden');
               var startIndex = $('.item-ign').size()+1;
 
-              var url = "http://ign-apis.herokuapp.com/videos?startIndex="+startIndex+"&count=10&callback=?"
+              var url = "https://ign-apis.herokuapp.com/videos?startIndex="+startIndex+"&count=10&callback=?"
 
                   $.getJSON(url, function(data){
 
